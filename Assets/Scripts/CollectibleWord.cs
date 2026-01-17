@@ -8,7 +8,7 @@ public class CollectibleWord : MonoBehaviour
     {
         Debug.Log("collion detected");
 
-        PlayerControllerTester controller = other.GetComponent<PlayerControllerTester>();
+        PlayerController controller = other.GetComponent<PlayerController>();
         
         if (controller != null && controller.numWords < controller.maxWords)
         {
