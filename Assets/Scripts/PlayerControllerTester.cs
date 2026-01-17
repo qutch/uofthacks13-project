@@ -4,13 +4,13 @@ using UnityEngine.InputSystem;
 public class PlayerControllerTester : MonoBehaviour
 {
     public InputAction MoveAction;
-    Rigidbody2D rigidbody;
+    Rigidbody2D rigidbodyElement;
     Vector2 movement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         MoveAction.Enable();
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbodyElement = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class PlayerControllerTester : MonoBehaviour
     
     void FixedUpdate()
     {
-        Vector2 newPosition = (Vector2)rigidbody.position + movement*3.0f*Time.deltaTime;
-        rigidbody.MovePosition(newPosition);
+        Vector2 newPosition = (Vector2)rigidbodyElement.position + movement*3.0f*Time.deltaTime;
+        rigidbodyElement.MovePosition(newPosition);
     }
 }
