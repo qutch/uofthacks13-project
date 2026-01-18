@@ -132,6 +132,8 @@ GameObject:
   - component: {fileID: 106258041}
   - component: {fileID: 106258040}
   - component: {fileID: 106258044}
+  - component: {fileID: 106258045}
+  - component: {fileID: 106258046}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -238,6 +240,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473d102060ff2fc4d8186ef1f890870a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuToGame
+--- !u!114 &106258045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106258039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962779cfd26847349882dfbc887936a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NameStorage
+  playerUserName: {fileID: 1149778715}
+--- !u!114 &106258046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106258039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78da1eea03b984143a5d1dff743b9646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LanguagePreference
+  languagePreference: {fileID: 989985401}
 --- !u!1 &139327943
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +463,30 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: MainMap
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 106258045}
+        m_TargetAssemblyTypeName: NameStorage, Assembly-CSharp
+        m_MethodName: RegisteredName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 106258046}
+        m_TargetAssemblyTypeName: LanguagePreference, Assembly-CSharp
+        m_MethodName: Language
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &365012890
@@ -1215,7 +1267,7 @@ GameObject:
   - component: {fileID: 989985402}
   - component: {fileID: 989985401}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: PreferredLanguage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1609,7 +1661,7 @@ GameObject:
   - component: {fileID: 1149778716}
   - component: {fileID: 1149778715}
   m_Layer: 5
-  m_Name: Name Input
+  m_Name: NameInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
