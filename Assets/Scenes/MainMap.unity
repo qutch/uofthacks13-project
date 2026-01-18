@@ -5307,6 +5307,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 568fe0f46843a416e95155efc2e7e1d4, type: 3}
+--- !u!212 &990228312 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6329990079894320840, guid: 46659dc60468f4c32bdb0a110dc0d560, type: 3}
+  m_PrefabInstance: {fileID: 6950973685477093816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1204043416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5649,6 +5654,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3850361751608096079, guid: 46659dc60468f4c32bdb0a110dc0d560, type: 3}
+      propertyPath: spriteUp
+      value: 
+      objectReference: {fileID: -7814200450545973387, guid: 1ae94c5ce0cb6934e9c5595dabb9b2b9, type: 3}
+    - target: {fileID: 3850361751608096079, guid: 46659dc60468f4c32bdb0a110dc0d560, type: 3}
+      propertyPath: spriteDown
+      value: 
+      objectReference: {fileID: 6476020496741556544, guid: 1ae94c5ce0cb6934e9c5595dabb9b2b9, type: 3}
+    - target: {fileID: 3850361751608096079, guid: 46659dc60468f4c32bdb0a110dc0d560, type: 3}
+      propertyPath: spriteLeft
+      value: 
+      objectReference: {fileID: 5602337906906987636, guid: 1ae94c5ce0cb6934e9c5595dabb9b2b9, type: 3}
+    - target: {fileID: 3850361751608096079, guid: 46659dc60468f4c32bdb0a110dc0d560, type: 3}
+      propertyPath: spriteRight
+      value: 
+      objectReference: {fileID: 5602337906906987636, guid: 1ae94c5ce0cb6934e9c5595dabb9b2b9, type: 3}
+    - target: {fileID: 3850361751608096079, guid: 46659dc60468f4c32bdb0a110dc0d560, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 990228312}
     - target: {fileID: 5667738170867142475, guid: 46659dc60468f4c32bdb0a110dc0d560, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.54
