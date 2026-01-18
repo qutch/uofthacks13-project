@@ -9,11 +9,13 @@ public class JournalManager : MonoBehaviour
     [SerializeField] private GameObject JournalScreen;
     public void OnJournalButtonClicked()
     {
+        Debug.Log("Clicked journal button");
         OpenJournal();
     }
 
     public void OpenJournal()
     {
+        Debug.Log("Open Journa");
         JournalScreen.SetActive(true);
     }
     

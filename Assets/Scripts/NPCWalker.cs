@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
 public class NPCWalker : MonoBehaviour
 {
+    [Header("UI Configuration")]
+    public GameObject uiFloatingPrompt;
+    
     [Header("Movement Settings")]
     public float moveSpeed = 3f;
     public float waitTime = 1f;
@@ -17,20 +21,99 @@ public class NPCWalker : MonoBehaviour
 
     private int currentStep = 0;
     private bool isMoving = false;
+    private bool isBusy = false;
+    
+    [SerializeField] AIManager aiManager;
+    [SerializeField] ElevenLabsManager elevenLabsManager;
+
+    private String translatedText = "";
 
     void Start()
     {
         if (spriteRenderer == null)
-        {
             spriteRenderer = GetComponent<SpriteRenderer>();
-        }
+
+        // Hide UI at start
+        if (uiFloatingPrompt != null)
+            uiFloatingPrompt.SetActive(false);
     }
 
     void Update()
     {
-        if (!isMoving && walkPattern.Length > 0)
+        if (!isMoving && walkPattern.Length > 0 && !isBusy)
         {
             StartCoroutine(MoveRoutine());
+        }
+    }
+    
+    // 1. Show UI on approach
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (uiFloatingPrompt != null) uiFloatingPrompt.SetActive(true);
+            
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.SetActiveNPC(this); // Register this NPC with the player
+            }
+        }
+    }
+    
+    // 2. Hide UI on exit
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (uiFloatingPrompt != null) uiFloatingPrompt.SetActive(false);
+            
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.ClearActiveNPC();
+            }
+
+            // Optional: If the player runs away, stop being busy so we can walk again
+            isBusy = false; 
+        }
+    }
+
+    // 3. Called by PlayerController when 'E' is pressed
+    public void Interact()
+    {
+        if (!isBusy)
+        {
+            isBusy = true;
+            aiManager.TranslateText("Hello! Do you like coffee?", (translatedResult) =>
+            {
+                // 1. Store the text
+                translatedText = translatedResult;
+                Debug.Log($"Translation received: {translatedText}");
+
+                // 2. NOW call ElevenLabs with the correct text
+                if (elevenLabsManager != null)
+                {
+                    elevenLabsManager.GenerateVoiceOver(translatedText, "JBFqnCBsd6RMkjVDRZzb");
+                }
+            });
+        }
+        else
+        {
+            // End Conversation (Toggle off)
+            aiManager.TranslateText("Goodbye!", (translatedResult) =>
+            {
+                // 1. Store the text
+                translatedText = translatedResult;
+                Debug.Log($"Translation received: {translatedText}");
+
+                // 2. NOW call ElevenLabs with the correct text
+                if (elevenLabsManager != null)
+                {
+                    elevenLabsManager.GenerateVoiceOver(translatedText, "JBFqnCBsd6RMkjVDRZzb");
+                }
+            });
+            isBusy = false; // Allows NPC to walk again
         }
     }
 

@@ -19,9 +19,15 @@ public class PlayerController : MonoBehaviour
     private int numWordsLearned = 0;
     public string[] vocabList { get { return learnedVocabulary; } }
     public int numWords { get { return numWordsLearned; } }
+    
+    private Camera mainCam;
+    private CollectibleWord activeWord;
+    private NPCWalker activeNPC;
 
     void Start()
     {
+        mainCam = Camera.main;
+        
         MoveAction.Enable();
         rigidbodyElement = GetComponent<Rigidbody2D>();
         learnedVocabulary = new string[maxWords];
@@ -29,13 +35,53 @@ public class PlayerController : MonoBehaviour
         // Automatic fallback if you forget to assign the SpriteRenderer
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
     }
+    
+    // These methods allow the CollectibleWord script to register itself
+    public void SetActiveWord(CollectibleWord wordScript)
+    {
+        activeWord = wordScript;
+    }
+    
+    public void SetActiveNPC(NPCWalker npc)
+    {
+        activeNPC = npc;
+    }
+    
+    public void ClearActiveNPC()
+    {
+        activeNPC = null;
+    }
+
+    public void ClearActiveWord()
+    {
+        activeWord = null;
+    }
 
     void Update()
     {
         movement = MoveAction.ReadValue<Vector2>();
-
-        // Update the sprite based on movement direction
         UpdateSprite(movement);
+    
+        // Check for 'E' press
+        if (Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            // Priority: Talk to NPC first, if no NPC, try picking up word
+            if (activeNPC != null)
+            {
+                activeNPC.Interact();
+            }
+            else if (activeWord != null)
+            {
+                activeWord.Interact(this);
+            }
+        }
+    }
+    
+    void LateUpdate()
+    {
+        // Rotate the UI to look at the camera
+        transform.LookAt(transform.position + mainCam.transform.rotation * Vector3.forward,
+            mainCam.transform.rotation * Vector3.up);
     }
 
     void UpdateSprite(Vector2 moveInput)

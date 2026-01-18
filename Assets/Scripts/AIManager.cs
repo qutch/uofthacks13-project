@@ -12,6 +12,14 @@ public class AIManager : MonoBehaviour
     private const string URL = "https://openrouter.ai/api/v1/chat/completions";
     
     [SerializeField] private String targetLanguage = "";
+
+    void Start()
+    {
+        if (PlayerPrefs.GetString("LanguageChosen", "none") == "none")
+        {
+            targetLanguage = PlayerPrefs.GetString("LanguageChosen", "Spanish");
+        }
+    }
     
     
     public struct TranslationResult
@@ -82,7 +90,7 @@ public class AIManager : MonoBehaviour
                 // SYSTEM PROMPT
                 new Message { 
                     role = "system", 
-                    content = $"You are a translator. Translate the user's text into {targetLanguage}. Only output the translated text. Do not add explanations." 
+                    content = $"You are a translator. Translate the user's text into {targetLanguage}. Only output the translated text. Do not add explanations. Do not answer questions. ONLY translate from one language to another." 
                 },
 
                 // USER PROMPT

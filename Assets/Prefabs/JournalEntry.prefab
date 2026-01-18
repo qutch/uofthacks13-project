@@ -150,5 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f68674fec4340e9827fe468496b88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  self: {fileID: 2135326331803527181}
   word: 
   translatedWord: 
