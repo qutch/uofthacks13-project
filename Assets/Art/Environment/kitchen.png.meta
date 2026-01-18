@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4ae5239b86adb4a19ac43facc422f152
+guid: 83e205305bbd14b0fbb0e5a15d0e5f47
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6762806206646994688
-    second: kitchen_0
+      213: -1298921282156278803
+    second: kitchen 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: kitchen_0
+      name: kitchen 1_0
       rect:
         serializedVersion: 2
         x: 159
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 009bffff59fa522a0800000000000000
-      internalID: -6762806206646994688
+      spriteID: deb41e1d9fd49fde0800000000000000
+      internalID: -1298921282156278803
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      kitchen_0: -6762806206646994688
+      kitchen 1_0: -1298921282156278803
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
